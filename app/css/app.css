@@ -1,0 +1,17 @@
+.ng-show {
+  display: block!important;
+  visibility: :hidden;
+}
+
+input.ng-invalid.ng-dirty {
+  background-color: pink;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.controller {
+  padding-left:20px;
+  padding-right: 20px;
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" ng-app="eventsApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default navbar-inverse">
+        <div class="container-fluid" ng-cloak>
+          <ul class="nav navbar-nav">
+            <li><a href="/NewEvent.html">Create Event</a></li>
+              <li><a href="/EditProfile.html">Profile</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div ng-controller="EventController" class="controller">
+        <div>
+          <img ng-src="{{event.imageUrl}}" ng-cloak alt="{{event.name}}" Height="100px" width="400px" />
+        </div>
+        <div class="row" ng-cloak>
+          <div class="col-xs-12">
+            <h2>{{event.name}}</h2>
+          </div>
+        </div>
+        <div class="row" ng-cloak>
+          <div class="col-xs-4">
+            <div><strong>Date: </strong>{{event.date}}</div>
+            <div><strong>Time: </strong>{{event.time}}</div>
+          </div>
+          <div class="col-xs-6" ng-cloak>
+            <address>
+              <strong>Address:</strong><br />
+              {{event.location.address}} <br />
+              {{event.location.city}}, {{event.location.province}}
+            </address>
+          </div>
+        </div>
+
+        <hr />
+
+        <h3 ng-cloak>Sessions</h3>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="session in event.sessions">
+            <div class="panel panel-primary">
+
+              <div class="panel-heading" ng-cloak>
+                <h3 class="panel-title">
+                  {{session.name | uppercase}}
+
+                  <!-- voting -->
+                  <span class="pull-right">
+                    <span style="font-size: 12px; margin-right: 5px;">Votes:</span>
+                    <i ng-click="upVoteSession(session)" class=" glyphicon glyphicon-chevron-up"></i>
+                    <div class="badge">{{session.upVoteCount}}</div>
+                    <i ng-show="session.canDownVote" ng-click="downVoteSession(session)" class="glyphicon glyphicon-chevron-down"></i>
+                  </span>
+                </h3>
+              </div>
+
+              <div class="panel-body" ng-cloak>
+                <div class="row">
+                  <span class="col-xs-12" style="margin-top: -5px;">
+                    <strong>Presenter: </strong>{{session.creatorName}}
+                  </span>
+                  <br />
+                  <span class="col-xs-6" style="margin-top: -5px;">
+                    <strong>Duration: </strong>{{session.duration | durations}}
+                  </span>
+                  <span class="col-xs-6" style="margin-top: -5px;">
+                    <strong>Level: </strong>{{session.level}}
+                  </span>
+                  <p class="col-xs-12" style="margin-top: 15px;">{{session.abstract}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/lib/angular.min.js"></script>
+    <script src="/lib/angular-resource.min.js"></script>
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/bootstrap.min.js"></script>
+    <script src="/lib/underscore-min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/services/EventData.js"></script>
+    <script src="/js/controllers/EventController.js"></script>
+    <script src="js/filters.js"></script>
+  </body>
+</html>
