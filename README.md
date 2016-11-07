@@ -1,0 +1,1 @@
+PluralSight_Angular_EventReg
