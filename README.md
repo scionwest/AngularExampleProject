@@ -1,1 +1,1 @@
-PluralSight_Angular_EventReg
+To get started, install NodeJS. Via the command prompt, navigate to the directory you cloned/downloaded this project into. Run `npm install` from the command prompt, then run `node scripts\web-server.js` to start the server. Then you can browse to [http://localhost:8000](localhost)\HTMLFILE.html, where HTMLFILE is the html example file you want to look at. You can find the available files under the `/app` directory.
