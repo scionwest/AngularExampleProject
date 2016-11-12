@@ -17,9 +17,11 @@
           </ul>
         </div>
       </nav>
+
       <div ng-controller="EventController" class="controller">
         <div>
           <img ng-src="{{event.imageUrl}}" ng-cloak alt="{{event.name}}" Height="100px" width="400px" />
+          <button type="button" class="btn btn-primary" ng-click="scrollToSession()">Scroll</button>
         </div>
         <div class="row" ng-cloak>
           <div class="col-xs-12">
@@ -43,8 +45,16 @@
         <hr />
 
         <h3 ng-cloak>Sessions</h3>
+          <select ng-model="query" class="form-control">
+            <option selected value="">All</option>
+            <option value="introductory">Introductory</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
         <div class="row">
-          <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="session in event.sessions">
+          <div class="col-xs-12 col-md-6 col-lg-4"
+               ng-repeat="session in event.sessions | filter:query | orderBy:sortOrder"
+               id="session{{session.id}}">
             <div class="panel panel-primary">
 
               <div class="panel-heading" ng-cloak>

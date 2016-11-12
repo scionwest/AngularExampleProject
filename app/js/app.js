@@ -1,3 +1,3 @@
 'use string';
 
-var eventsApp = angular.module('eventsApp', ['ngResource']);
+var eventsApp = angular.module('eventsApp', ['ngResource'])
